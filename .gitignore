@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+node_modules
+package-lock.json
+dist
+coverage
+*.tsbuildinfo
+.oxlint-cache
+.oxlintrc.generated.json
