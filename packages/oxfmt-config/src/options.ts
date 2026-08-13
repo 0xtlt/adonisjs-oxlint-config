@@ -1,10 +1,10 @@
 import type { OxfmtConfig } from './types'
 
 /**
- * Oxfmt options mapped from `@adonisjs/prettier-config`.
+ * Oxfmt options for AdonisJS packages and applications.
  *
- * Oxfmt cannot load Prettier plugins, so `.edge` files are ignored here and
- * formatted by `prettier-edge` via `formatEdge()` / `adonisjs-oxfmt-edge`.
+ * `.edge` files are ignored here and formatted by the bundled Edge printer
+ * (`formatEdge()` / `adonisjs-oxfmt-edge`).
  */
 export const OPTIONS = {
   trailingComma: 'es5',

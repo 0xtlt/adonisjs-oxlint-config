@@ -1,4 +1,4 @@
-export { configEdge, EDGE_EXTENSIONS, EDGE_OPTIONS, prettierEdgePluginPath } from './options'
+export { configEdge, EDGE_EXTENSIONS, EDGE_OPTIONS } from './options'
 export {
   collectEdgeFiles,
   formatEdge,

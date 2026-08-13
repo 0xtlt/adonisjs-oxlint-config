@@ -6,7 +6,7 @@ function unique(values: string[]): string[] {
 }
 
 /**
- * Opinionated Oxfmt config matching `@adonisjs/prettier-config`.
+ * Opinionated Oxfmt config for AdonisJS packages and applications.
  *
  * Extra options are merged on top of the preset. Later keys win.
  * `ignorePatterns` are concatenated.
@@ -31,14 +31,8 @@ export {
   isEdgeFile,
   EDGE_EXTENSIONS,
   EDGE_OPTIONS,
-  prettierEdgePluginPath,
 } from './edge/index'
-export type {
-  ConfigOverrides,
-  EdgeAttributeQuotes,
-  EdgePrettierOptions,
-  OxfmtConfig,
-} from './types'
+export type { ConfigOverrides, EdgeAttributeQuotes, EdgeFormatOptions, OxfmtConfig } from './types'
 export type { FormatEdgeProjectOptions, FormatEdgeProjectResult } from './edge/index'
 
 export default OPTIONS

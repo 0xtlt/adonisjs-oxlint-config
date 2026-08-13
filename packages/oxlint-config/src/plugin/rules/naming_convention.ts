@@ -45,7 +45,7 @@ const DEFAULT_SELECTORS: NamingSelector[] = [
 ]
 
 /**
- * AdonisJS subset of `@typescript-eslint/naming-convention`.
+ * AdonisJS naming conventions for variables, types, classes, and interfaces.
  */
 export default createRule<[{ selectors?: NamingSelector[] }?]>({
   meta: {

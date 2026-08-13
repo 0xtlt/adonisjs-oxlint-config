@@ -58,7 +58,7 @@ export const PLUGINS_LIST = [
 /**
  * Categories are disabled so only the explicit AdonisJS rule list is active.
  * Oxlint otherwise turns `correctness` on by default, which would enable
- * extra rules that `@adonisjs/eslint-config` never shipped.
+ * extra rules that this AdonisJS preset does not ship.
  */
 export const DISABLED_CATEGORIES = {
   correctness: 'off',

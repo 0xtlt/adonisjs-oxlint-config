@@ -1,9 +1,8 @@
-import type { Plugin } from 'prettier'
-
 export type TrailingComma = 'all' | 'es5' | 'none'
 export type QuoteProps = 'as-needed' | 'consistent' | 'preserve'
 export type ArrowParens = 'always' | 'avoid'
 export type EndOfLine = 'lf' | 'crlf' | 'cr'
+export type EdgeAttributeQuotes = 'double' | 'single' | 'preserve'
 
 export interface OxfmtConfig {
   printWidth?: number
@@ -32,22 +31,10 @@ export interface OxfmtConfig {
 
 export type ConfigOverrides = Partial<OxfmtConfig>
 
-export type EdgeAttributeQuotes = 'double' | 'single' | 'preserve'
-
-export interface EdgePrettierOptions {
-  parser?: 'edge' | string
-  plugins?: Array<string | Plugin>
-  filepath?: string
-  trailingComma?: TrailingComma
-  semi?: boolean
-  singleQuote?: boolean
-  useTabs?: boolean
-  quoteProps?: QuoteProps
-  bracketSpacing?: boolean
-  arrowParens?: ArrowParens
+export interface EdgeFormatOptions {
   printWidth?: number
   tabWidth?: number
-  endOfLine?: EndOfLine
+  useTabs?: boolean
   edgeMustacheSpacing?: number
   edgeAttributeQuotes?: EdgeAttributeQuotes
   edgeBlankLinesInBlocks?: number

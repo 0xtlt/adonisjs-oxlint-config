@@ -1,42 +1,29 @@
 import { describe, expect, it } from 'vitest'
 
-import {
-  EDGE_EXTENSIONS,
-  EDGE_OPTIONS,
-  configEdge,
-  formatEdge,
-  prettierEdgePluginPath,
-} from '../src/index'
+import { EDGE_EXTENSIONS, EDGE_OPTIONS, configEdge, formatEdge } from '../src/index'
 
 describe('configEdge', () => {
-  it('uses the same AdonisJS Prettier options as the original prettier-config', () => {
+  it('uses the AdonisJS Oxfmt options for Edge templates', () => {
     expect(EDGE_OPTIONS).toMatchObject({
-      trailingComma: 'es5',
-      semi: false,
-      singleQuote: true,
-      useTabs: false,
-      quoteProps: 'consistent',
-      bracketSpacing: true,
-      arrowParens: 'always',
       printWidth: 100,
+      tabWidth: 2,
+      useTabs: false,
+      edgeMustacheSpacing: 1,
     })
   })
 
-  it('points Prettier at the prettier-edge plugin', () => {
-    const config = configEdge()
-
-    expect(config.parser).toBe('edge')
-    expect(config.plugins).toEqual([prettierEdgePluginPath()])
-    expect(prettierEdgePluginPath()).toMatch(/prettier-edge/)
+  it('merges extra Edge options on top of the preset', () => {
+    expect(configEdge({ printWidth: 80 }).printWidth).toBe(80)
+    expect(configEdge({ printWidth: 80 }).tabWidth).toBe(2)
   })
 
-  it('lists the Edge extensions prettier-edge owns', () => {
+  it('lists the Edge extensions the printer owns', () => {
     expect(EDGE_EXTENSIONS).toEqual(['.edge', '.edgejs'])
   })
 })
 
 describe('formatEdge', () => {
-  it('formats Edge tags, HTML, and mustaches like prettier-edge', async () => {
+  it('formats Edge tags, HTML, and mustaches', async () => {
     const formatted = await formatEdge(`@if(showFooter)
 <footer class="border-t">
 @each(section in sections)
@@ -56,7 +43,7 @@ describe('formatEdge', () => {
 `)
   })
 
-  it('formats JavaScript inside mustaches with the AdonisJS quote/semi options', async () => {
+  it('formats JavaScript inside mustaches with the AdonisJS quote options', async () => {
     const formatted = await formatEdge(`<p>{{user["name"]}}</p>\n`)
 
     expect(formatted).toContain("{{ user['name'] }}")

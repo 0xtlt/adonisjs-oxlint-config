@@ -2,7 +2,7 @@ import { type VariableDeclarationNode, type VariableDeclaratorNode, isIdentifier
 import { createRule } from '../types'
 
 /**
- * Disallow initializing variables to `undefined` (eslint/no-undef-init).
+ * Disallow initializing variables to `undefined`.
  * `const` declarations are ignored because they require an initializer.
  */
 export default createRule({

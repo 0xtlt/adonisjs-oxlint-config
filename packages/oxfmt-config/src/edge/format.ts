@@ -1,11 +1,11 @@
 import { statSync } from 'node:fs'
 import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { extname, isAbsolute, join, relative, resolve } from 'node:path'
-import { format as prettierFormat } from 'prettier'
-import type { Options as PrettierOptions } from 'prettier'
 
-import { configEdge, EDGE_EXTENSIONS } from './options'
-import type { EdgePrettierOptions } from '../types'
+import { parseEdge } from './parse'
+import { printDocument } from './print'
+import { EDGE_EXTENSIONS } from './options'
+import type { EdgeFormatOptions } from '../types'
 
 const SKIP_DIRECTORIES = new Set([
   'node_modules',
@@ -24,7 +24,7 @@ export interface FormatEdgeProjectOptions {
   check?: boolean
   cwd?: string
   paths?: string[]
-  overrides?: EdgePrettierOptions
+  overrides?: EdgeFormatOptions
 }
 
 export interface FormatEdgeProjectResult {
@@ -34,12 +34,14 @@ export interface FormatEdgeProjectResult {
 
 export async function formatEdge(
   source: string,
-  overrides: EdgePrettierOptions = {}
+  overrides: EdgeFormatOptions = {}
 ): Promise<string> {
-  return prettierFormat(source, {
-    filepath: overrides.filepath ?? 'template.edge',
-    ...configEdge(overrides),
-  } as PrettierOptions)
+  try {
+    const ast = parseEdge(source)
+    return await printDocument(ast, overrides)
+  } catch {
+    return source.endsWith('\n') ? source : `${source}\n`
+  }
 }
 
 export async function collectEdgeFiles(directory: string): Promise<string[]> {
@@ -105,10 +107,7 @@ export async function formatEdgeProject(
 
   for (const file of files) {
     const original = await readFile(file, 'utf8')
-    const formatted = await formatEdge(original, {
-      ...options.overrides,
-      filepath: file,
-    })
+    const formatted = await formatEdge(original, options.overrides)
 
     if (formatted === original) {
       continue

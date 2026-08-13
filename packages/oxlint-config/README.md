@@ -8,9 +8,8 @@
 <div align="center">
   <h3>Oxlint presets used by AdonisJS applications and packages</h3>
   <p>
-    A TypeScript rebuild of <a href="https://github.com/adonisjs/eslint-config"><code>@adonisjs/eslint-config</code></a>
-    for the Oxc linter. The presets keep the original AdonisJS rule intent, mapped onto native Oxlint plugins
-    plus a small JS plugin for AdonisJS-specific rules.
+    A TypeScript Oxlint preset for AdonisJS applications and packages. Native
+    Oxlint plugins plus a small JS plugin for AdonisJS-specific rules.
   </p>
 </div>
 
@@ -102,46 +101,13 @@ export default configApp({
 })
 ```
 
-## What changed from ESLint
+## Rules
 
-| Original ESLint preset                              | Oxlint preset                                                   |
-| --------------------------------------------------- | --------------------------------------------------------------- |
-| ESLint core rules                                   | Native `eslint/*` rules                                         |
-| `typescript-eslint`                                 | Native `typescript/*` rules                                     |
-| `eslint-plugin-unicorn`                             | Native `unicorn/*` rules                                        |
-| `@adonisjs/eslint-plugin`                           | Bundled Oxlint JS plugin (`@adonisjs/*`)                        |
-| `eslint-plugin-vue`                                 | Native `vue` plugin (script blocks)                             |
-| `eslint-plugin-react` + `eslint-plugin-react-hooks` | Native `react` plugin                                           |
-| `@stylistic/eslint-plugin` + Prettier               | Omitted (use [`@0xtlt/adonisjs-oxfmt-config`](../oxfmt-config)) |
+The preset enables an explicit AdonisJS rule list on native Oxlint plugins plus bundled `@adonisjs/*` rules. Oxlint categories are turned **off** so only that list runs.
 
-Formatting is out of scope for Oxlint. Use [`@0xtlt/adonisjs-oxfmt-config`](../oxfmt-config) (Oxfmt port of `@adonisjs/prettier-config`).
+Formatting is out of scope. Use [`@0xtlt/adonisjs-oxfmt-config`](../oxfmt-config).
 
-### Rule compatibility
-
-| Original rule                                                                                                           | Oxlint handling                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `@typescript-eslint/consistent-type-imports`                                                                            | `typescript/consistent-type-imports`                                                              |
-| `@typescript-eslint/no-shadow`                                                                                          | `no-shadow`                                                                                       |
-| `@typescript-eslint/naming-convention`                                                                                  | `@adonisjs/naming-convention` (same AdonisJS selectors)                                           |
-| `unicorn/prefer-module`                                                                                                 | `unicorn/prefer-module`                                                                           |
-| `unicorn/filename-case`                                                                                                 | `unicorn/filename-case` (`snakeCase`)                                                             |
-| `unicorn/no-for-loop`                                                                                                   | `@adonisjs/no-for-loop` (removed upstream from Unicorn)                                           |
-| `no-undef-init`                                                                                                         | `@adonisjs/no-undef-init`                                                                         |
-| `one-var`                                                                                                               | Native `one-var`                                                                                  |
-| `handle-callback-err`                                                                                                   | `node/handle-callback-err`                                                                        |
-| `@stylistic/*`, `prettier/prettier`                                                                                     | Not ported (formatters, not linters)                                                              |
-| `vue/block-order`, `vue/component-api-style`, `vue/multi-word-component-names`, `vue/component-name-in-template-casing` | Not available in native Oxlint Vue yet; `vue/component-definition-name-casing` is enabled instead |
-| `experimentalDecorators` / `emitDecoratorMetadata` on `configApp()`                                                     | Not ported                                                                                        |
-
-## Not ported
-
-- `@stylistic/*` and `prettier/prettier` — use [`@0xtlt/adonisjs-oxfmt-config`](../oxfmt-config)
-- Vue `flat/recommended` and template-AST rules listed above
-- Full `@typescript-eslint/naming-convention` (only the AdonisJS selectors)
-- ESLint flat-config `files: ['**/*.ts']` scoping
-- Identical ESLint diagnostic text and autofix coverage
-
-Oxlint categories are turned **off** so the preset stays a faithful rebuild of the original explicit rule list, rather than enabling Oxlint's default `correctness` set.
+Vue overlays cover script-block rules that exist natively (`define-emits-declaration`, `define-props-declaration`, `component-definition-name-casing`). React overlays cover the native `react` plugin, including hooks.
 
 ## Development
 
@@ -155,7 +121,6 @@ npm run lint
 
 <div align="center">
   <sub>
-    Rebuilt from <a href="https://github.com/adonisjs/eslint-config">adonisjs/eslint-config</a>
     for <a href="https://oxc.rs/docs/guide/usage/linter">Oxlint</a>.
   </sub>
 </div>

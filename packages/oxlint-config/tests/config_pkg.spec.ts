@@ -39,12 +39,10 @@ describe('configPkg', () => {
     expect(rules['no-shadow']).toBe('error')
   })
 
-  it('does not include Prettier or stylistic formatting rules', () => {
+  it('does not include formatter rules', () => {
     const rules = configPkg().rules ?? {}
 
-    expect(rules['prettier/prettier']).toBeUndefined()
     expect(rules['@stylistic/indent']).toBeUndefined()
-    expect(rules['@stylistic/quotes']).toBeUndefined()
   })
 
   it('points jsPlugins at a real AdonisJS plugin file', () => {

@@ -3,7 +3,6 @@ import { createRule } from '../types'
 
 /**
  * Disallow classic `for` loops that iterate an array by index.
- * Port of the removed unicorn/no-for-loop rule from the original ESLint preset.
  */
 export default createRule({
   meta: {

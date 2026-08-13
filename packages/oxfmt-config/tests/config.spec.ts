@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { OPTIONS, configOxfmt } from '../src/index'
 
 describe('configOxfmt', () => {
-  it('matches the original AdonisJS Prettier options', () => {
+  it('matches the AdonisJS Oxfmt options', () => {
     expect(OPTIONS).toMatchObject({
       trailingComma: 'es5',
       semi: false,
@@ -19,12 +19,12 @@ describe('configOxfmt', () => {
     })
   })
 
-  it('does not enable Oxfmt-only sorting that Prettier did not ship', () => {
+  it('does not enable Oxfmt-only sorting', () => {
     expect(OPTIONS.sortImports).toBe(false)
     expect(OPTIONS.sortPackageJson).toBe(false)
   })
 
-  it('ignores Edge templates in Oxfmt because they are formatted by prettier-edge', () => {
+  it('ignores Edge templates in Oxfmt because they are formatted by formatEdge', () => {
     expect(OPTIONS.ignorePatterns).toEqual(expect.arrayContaining(['**/*.edge', '**/*.edgejs']))
   })
 

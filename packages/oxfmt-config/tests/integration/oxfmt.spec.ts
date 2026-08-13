@@ -44,7 +44,7 @@ function runOxfmt(
 }
 
 describe('oxfmt integration', () => {
-  it('formats TypeScript with the AdonisJS Prettier-compatible options', () => {
+  it('formats TypeScript with the AdonisJS Oxfmt options', () => {
     const project = createTempProject()
 
     try {
@@ -88,7 +88,7 @@ describe('oxfmt integration', () => {
     }
   })
 
-  it('leaves Edge templates for prettier-edge instead of formatting them with Oxfmt', () => {
+  it('leaves Edge templates for formatEdge instead of formatting them with Oxfmt', () => {
     const project = createTempProject()
     const original = `@if(user)\n  <p>{{ user.name }}</p>\n@end\n`
 

@@ -43,7 +43,7 @@ function runEdgeCli(
   }
 }
 
-describe('prettier-edge integration', () => {
+describe('Edge formatter integration', () => {
   it('writes formatted Edge templates', async () => {
     const project = createTempProject()
 

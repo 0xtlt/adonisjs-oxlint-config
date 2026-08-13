@@ -5,11 +5,8 @@ import type { OxlintConfig } from '../types'
 /**
  * Vue-specific Oxlint config block for AdonisJS apps.
  *
- * Native Oxlint Vue coverage is limited to `<script>` blocks. Rules that need
- * the Vue template AST (`block-order`, `component-api-style`,
- * `multi-word-component-names`, `component-name-in-template-casing`) are not
- * available yet; `component-definition-name-casing` is the closest native
- * equivalent for PascalCase component names.
+ * Native Oxlint Vue coverage is limited to `<script>` blocks.
+ * `component-definition-name-casing` enforces PascalCase component names.
  */
 export const vue: OxlintConfig = {
   plugins: [...PLUGINS_LIST, 'vue'],

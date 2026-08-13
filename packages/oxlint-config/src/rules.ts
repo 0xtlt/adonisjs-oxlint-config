@@ -1,10 +1,9 @@
 import type { RuleConfig } from './types'
 
 /**
- * Shared rule list mapped from `@adonisjs/eslint-config`.
+ * Shared AdonisJS rule list.
  *
- * Formatting rules from `@stylistic/eslint-plugin` and `eslint-plugin-prettier`
- * are intentionally omitted: Oxlint is a linter, not a formatter.
+ * Formatting is out of scope: Oxlint is a linter, not a formatter.
  */
 export const RULES_LIST = {
   'curly': ['error', 'all'],

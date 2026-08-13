@@ -2,7 +2,7 @@
 
 > Compatible with [Oxfmt](https://oxc.rs/docs/guide/usage/formatter)
 
-A TypeScript rebuild of [`@adonisjs/prettier-config`](https://github.com/adonisjs/prettier-config) for the Oxc formatter, plus [`prettier-edge`](https://github.com/edge-js/prettier-plugin-edge) for Edge templates.
+Oxfmt presets for AdonisJS applications and packages, plus a native Edge template printer.
 
 ## Installation
 
@@ -22,7 +22,7 @@ import { defineConfig } from 'oxfmt'
 export default defineConfig(configOxfmt())
 ```
 
-Oxfmt cannot load Prettier plugins. Edge templates are formatted with the bundled `prettier-edge` CLI:
+Edge templates are formatted by the bundled printer:
 
 ```json
 {
@@ -32,8 +32,6 @@ Oxfmt cannot load Prettier plugins. Edge templates are formatted with the bundle
   }
 }
 ```
-
-Or call the same formatter from TypeScript:
 
 ```ts
 import { formatEdge } from '@0xtlt/adonisjs-oxfmt-config'
@@ -55,27 +53,11 @@ export default defineConfig(
 )
 ```
 
-## What changed from Prettier
+## Options
 
-| Original Prettier option             | Handling                                          |
-| ------------------------------------ | ------------------------------------------------- |
-| `trailingComma: "es5"`               | Same in Oxfmt and prettier-edge                   |
-| `semi: false`                        | Same                                              |
-| `singleQuote: true`                  | Same                                              |
-| `useTabs: false`                     | Same                                              |
-| `quoteProps: "consistent"`           | Same                                              |
-| `bracketSpacing: true`               | Same                                              |
-| `arrowParens: "always"`              | Same                                              |
-| `printWidth: 100`                    | Same                                              |
-| `plugins: [prettier-edge]`           | Bundled as `adonisjs-oxfmt-edge` / `formatEdge()` |
-| Oxfmt `sortPackageJson` (default on) | Disabled to match Prettier                        |
-| Oxfmt `sortImports`                  | Disabled to match Prettier                        |
+`semi: false`, `singleQuote: true`, `printWidth: 100`, `trailingComma: 'es5'`, `quoteProps: 'consistent'`, `sortPackageJson: false`, `sortImports: false`.
 
-## Not ported
-
-- Loading `prettier-edge` _inside_ Oxfmt. Oxfmt has no Prettier plugin API yet, so `.edge` files are ignored by `configOxfmt()` and formatted by the companion CLI.
-- Byte-identical Prettier output for JS/TS. Oxfmt is Prettier-compatible, not a Prettier clone.
-- `prettier/prettier` `endOfLine: "auto"` from the ESLint preset. Oxfmt uses `lf`.
+`.edge` / `.edgejs` files are ignored by `configOxfmt()` and handled by `formatEdge()`.
 
 ## Development
 

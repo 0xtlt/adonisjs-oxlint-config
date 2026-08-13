@@ -14,5 +14,5 @@ export default defineConfig({
   treeshake: true,
   target: 'node20',
   outDir: 'dist',
-  external: ['prettier', 'prettier-edge'],
+  external: ['oxfmt'],
 })
