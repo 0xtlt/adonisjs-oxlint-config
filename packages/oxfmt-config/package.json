@@ -1,0 +1,65 @@
+{
+  "name": "@0xtlt/adonisjs-oxfmt-config",
+  "version": "1.0.0",
+  "description": "Oxfmt presets used by AdonisJS applications and packages",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "adonisjs-oxfmt-edge": "./dist/cli/edge.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./edge": {
+      "types": "./dist/edge/index.d.ts",
+      "import": "./dist/edge/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "npm run build && vitest run",
+    "test:watch": "vitest",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "node scripts/run_format.js --write",
+    "format:check": "node scripts/run_format.js --check",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "peerDependencies": {
+    "oxfmt": ">=0.47.0"
+  },
+  "homepage": "https://github.com/0xtlt/adonisjs-oxlint-config/tree/main/packages/oxfmt-config#readme",
+  "bugs": {
+    "url": "https://github.com/0xtlt/adonisjs-oxlint-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xtlt/adonisjs-oxlint-config.git",
+    "directory": "packages/oxfmt-config"
+  },
+  "keywords": [
+    "oxfmt",
+    "oxc",
+    "adonisjs",
+    "formatter",
+    "edge",
+    "typescript"
+  ],
+  "author": "Thomas",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

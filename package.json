@@ -1,0 +1,29 @@
+{
+  "name": "@0xtlt/adonisjs-oxc-config",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "format": "npm run build -w @0xtlt/adonisjs-oxfmt-config && npm run format --workspaces --if-present && oxfmt -c packages/oxfmt-config/.oxfmtrc.generated.json --write README.md tsconfig.base.json",
+    "format:check": "npm run build -w @0xtlt/adonisjs-oxfmt-config && npm run format:check --workspaces --if-present && oxfmt -c packages/oxfmt-config/.oxfmtrc.generated.json --check README.md tsconfig.base.json"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "license": "MIT"
+}
