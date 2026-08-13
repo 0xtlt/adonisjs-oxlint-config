@@ -131,6 +131,15 @@ Formatting is out of scope for Oxlint. Use [`@0xtlt/adonisjs-oxfmt-config`](../o
 | `handle-callback-err`                                                                                                   | `node/handle-callback-err`                                                                        |
 | `@stylistic/*`, `prettier/prettier`                                                                                     | Not ported (formatters, not linters)                                                              |
 | `vue/block-order`, `vue/component-api-style`, `vue/multi-word-component-names`, `vue/component-name-in-template-casing` | Not available in native Oxlint Vue yet; `vue/component-definition-name-casing` is enabled instead |
+| `experimentalDecorators` / `emitDecoratorMetadata` on `configApp()`                                                     | Not ported                                                                                        |
+
+## Not ported
+
+- `@stylistic/*` and `prettier/prettier` — use [`@0xtlt/adonisjs-oxfmt-config`](../oxfmt-config)
+- Vue `flat/recommended` and template-AST rules listed above
+- Full `@typescript-eslint/naming-convention` (only the AdonisJS selectors)
+- ESLint flat-config `files: ['**/*.ts']` scoping
+- Identical ESLint diagnostic text and autofix coverage
 
 Oxlint categories are turned **off** so the preset stays a faithful rebuild of the original explicit rule list, rather than enabling Oxlint's default `correctness` set.
 

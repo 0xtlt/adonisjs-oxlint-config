@@ -24,7 +24,7 @@ describe('configOxfmt', () => {
     expect(OPTIONS.sortPackageJson).toBe(false)
   })
 
-  it('ignores Edge templates because Oxfmt cannot load prettier-edge', () => {
+  it('ignores Edge templates in Oxfmt because they are formatted by prettier-edge', () => {
     expect(OPTIONS.ignorePatterns).toEqual(expect.arrayContaining(['**/*.edge', '**/*.edgejs']))
   })
 

@@ -13,10 +13,17 @@
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "adonisjs-oxfmt-edge": "./dist/cli/edge.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./edge": {
+      "types": "./dist/edge/index.d.ts",
+      "import": "./dist/edge/index.js"
     }
   },
   "scripts": {
@@ -29,6 +36,10 @@
     "format": "node scripts/run_format.js --write",
     "format:check": "node scripts/run_format.js --check",
     "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "prettier": "^3.6.2",
+    "prettier-edge": "^1.0.0"
   },
   "peerDependencies": {
     "oxfmt": ">=0.47.0"
@@ -48,6 +59,8 @@
     "adonisjs",
     "formatter",
     "prettier",
+    "prettier-edge",
+    "edge",
     "typescript"
   ],
   "author": "Thomas",

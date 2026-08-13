@@ -23,6 +23,22 @@ export function configOxfmt(overrides: ConfigOverrides = {}): OxfmtConfig {
 }
 
 export { OPTIONS }
-export type { ConfigOverrides, OxfmtConfig }
+export {
+  configEdge,
+  collectEdgeFiles,
+  formatEdge,
+  formatEdgeProject,
+  isEdgeFile,
+  EDGE_EXTENSIONS,
+  EDGE_OPTIONS,
+  prettierEdgePluginPath,
+} from './edge/index'
+export type {
+  ConfigOverrides,
+  EdgeAttributeQuotes,
+  EdgePrettierOptions,
+  OxfmtConfig,
+} from './types'
+export type { FormatEdgeProjectOptions, FormatEdgeProjectResult } from './edge/index'
 
 export default OPTIONS

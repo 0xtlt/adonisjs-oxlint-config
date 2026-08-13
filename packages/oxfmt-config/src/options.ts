@@ -3,8 +3,8 @@ import type { OxfmtConfig } from './types'
 /**
  * Oxfmt options mapped from `@adonisjs/prettier-config`.
  *
- * `prettier-edge` is not ported: Oxfmt does not support Prettier plugins.
- * Keep Prettier for `.edge` templates, or leave those files unformatted.
+ * Oxfmt cannot load Prettier plugins, so `.edge` files are ignored here and
+ * formatted by `prettier-edge` via `formatEdge()` / `adonisjs-oxfmt-edge`.
  */
 export const OPTIONS = {
   trailingComma: 'es5',

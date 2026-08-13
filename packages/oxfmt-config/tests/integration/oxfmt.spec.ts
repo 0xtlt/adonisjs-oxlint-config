@@ -88,7 +88,7 @@ describe('oxfmt integration', () => {
     }
   })
 
-  it('does not format Edge templates that prettier-edge used to handle', () => {
+  it('leaves Edge templates for prettier-edge instead of formatting them with Oxfmt', () => {
     const project = createTempProject()
     const original = `@if(user)\n  <p>{{ user.name }}</p>\n@end\n`
 
