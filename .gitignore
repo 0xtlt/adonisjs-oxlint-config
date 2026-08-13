@@ -7,3 +7,4 @@ coverage
 *.tsbuildinfo
 .oxlint-cache
 .oxlintrc.generated.json
+.oxfmtrc.generated.json

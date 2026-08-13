@@ -1,78 +1,29 @@
 {
-  "name": "@0xtlt/adonisjs-oxlint-config",
-  "version": "1.0.0",
-  "description": "Oxlint presets used by AdonisJS applications and packages",
+  "name": "@0xtlt/adonisjs-oxc-config",
+  "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=20.19.0"
-  },
-  "files": [
-    "dist",
-    "LICENSE.md",
-    "README.md"
+  "workspaces": [
+    "packages/*"
   ],
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./vue": {
-      "types": "./dist/frameworks/vue.d.ts",
-      "import": "./dist/frameworks/vue.js"
-    },
-    "./react": {
-      "types": "./dist/frameworks/react.d.ts",
-      "import": "./dist/frameworks/react.js"
-    },
-    "./plugin": {
-      "types": "./dist/plugin/index.d.ts",
-      "import": "./dist/plugin/index.js"
-    }
-  },
   "scripts": {
-    "build": "tsup",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "npm run build && vitest run",
-    "test:watch": "vitest",
-    "lint": "npm run build && node scripts/run_lint.js",
-    "lint:fix": "npm run build && node scripts/run_lint.js --fix",
-    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
-  },
-  "dependencies": {
-    "micromatch": "^4.0.8",
-    "read-package-up": "^12.0.0"
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "format": "npm run build -w @0xtlt/adonisjs-oxfmt-config && npm run format --workspaces --if-present && oxfmt -c packages/oxfmt-config/.oxfmtrc.generated.json --write README.md tsconfig.base.json",
+    "format:check": "npm run build -w @0xtlt/adonisjs-oxfmt-config && npm run format:check --workspaces --if-present && oxfmt -c packages/oxfmt-config/.oxfmtrc.generated.json --check README.md tsconfig.base.json"
   },
   "devDependencies": {
-    "@types/micromatch": "^4.0.10",
     "@types/node": "^24.3.0",
+    "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
-  "peerDependencies": {
-    "oxlint": ">=1.56.0"
+  "engines": {
+    "node": ">=20.19.0"
   },
-  "homepage": "https://github.com/0xtlt/adonisjs-oxlint-config#readme",
-  "bugs": {
-    "url": "https://github.com/0xtlt/adonisjs-oxlint-config/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/0xtlt/adonisjs-oxlint-config.git"
-  },
-  "keywords": [
-    "oxlint",
-    "oxc",
-    "adonisjs",
-    "linter",
-    "typescript"
-  ],
-  "author": "Thomas",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  }
+  "license": "MIT"
 }

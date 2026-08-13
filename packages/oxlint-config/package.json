@@ -1,0 +1,76 @@
+{
+  "name": "@0xtlt/adonisjs-oxlint-config",
+  "version": "1.0.0",
+  "description": "Oxlint presets used by AdonisJS applications and packages",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./vue": {
+      "types": "./dist/frameworks/vue.d.ts",
+      "import": "./dist/frameworks/vue.js"
+    },
+    "./react": {
+      "types": "./dist/frameworks/react.d.ts",
+      "import": "./dist/frameworks/react.js"
+    },
+    "./plugin": {
+      "types": "./dist/plugin/index.d.ts",
+      "import": "./dist/plugin/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "npm run build && vitest run",
+    "test:watch": "vitest",
+    "lint": "npm run build && node scripts/run_lint.js",
+    "lint:fix": "npm run build && node scripts/run_lint.js --fix",
+    "format": "node scripts/run_format.js --write",
+    "format:check": "node scripts/run_format.js --check",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "micromatch": "^4.0.8",
+    "read-package-up": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/micromatch": "^4.0.10"
+  },
+  "peerDependencies": {
+    "oxlint": ">=1.56.0"
+  },
+  "homepage": "https://github.com/0xtlt/adonisjs-oxlint-config/tree/main/packages/oxlint-config#readme",
+  "bugs": {
+    "url": "https://github.com/0xtlt/adonisjs-oxlint-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xtlt/adonisjs-oxlint-config.git",
+    "directory": "packages/oxlint-config"
+  },
+  "keywords": [
+    "oxlint",
+    "oxc",
+    "adonisjs",
+    "linter",
+    "typescript"
+  ],
+  "author": "Thomas",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
